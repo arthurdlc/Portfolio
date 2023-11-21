@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CompetencesReseau{% endblock %}
+
+{% block body %}
+    <h1>Edit CompetencesReseau</h1>
+
+    {{ include('competences_reseau/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_competences_reseau_index') }}">back to list</a>
+
+    {{ include('competences_reseau/_delete_form.html.twig') }}
+{% endblock %}

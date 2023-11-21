@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CompetencesSLAM{% endblock %}
+
+{% block body %}
+    <h1>Edit CompetencesSLAM</h1>
+
+    {{ include('competences_slam/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_competences_s_l_a_m_index') }}">back to list</a>
+
+    {{ include('competences_slam/_delete_form.html.twig') }}
+{% endblock %}

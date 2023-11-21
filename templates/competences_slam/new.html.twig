@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CompetencesSLAM{% endblock %}
+
+{% block body %}
+    <h1>Create new CompetencesSLAM</h1>
+
+    {{ include('competences_slam/_form.html.twig') }}
+
+    <a href="{{ path('app_competences_s_l_a_m_index') }}">back to list</a>
+{% endblock %}
