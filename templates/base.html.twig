@@ -6,204 +6,36 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
         {% endblock %}
-          <style>
-            @font-face {
-            font-family: 'Amsterdam';
-            src: url('/fonts/amsterdam_4/Amsterdam.ttf') format('truetype');
-            }
-            /* Footer */
-            footer {
-                background-color: #262626;
-                color: #fff;
-                padding: 50px 0;
-                width: 100%;
-                bottom: 0;
-            }
-
-            .footerc {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-
-            .footers {
-                width: 30%;
-                margin-bottom: 20px;
-            }
-
-            .footerh {
-                font-size: 24px;
-                margin-bottom: 10px;
-                text-transform: uppercase;
-            }
-
-            .footerl {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                font-size: 20px;
-            }
-
-            .footerl li {
-                margin-bottom: 10px;
-            }
-
-            .footerl a {
-                color: white;
-                text-decoration: none;
-            }
-
-            .social li {
-                display: inline-block;
-                margin-right: 10px;
-            }
-
-            .social li:last-child {
-                margin-right: 0;
-            }
-
-            .fa,
-            .fas {
-                font-size: 20px;
-                margin-right: 0px;
-            }
-                /*///////NavBar///////*/
-            .navbar {
-                position: fixed;
-                top: 0;
-                left: -300px; /* Barre de navigation initialement cachée */
-                width: 300px;
-                height: 100vh;
-                background-color: black; /* Couleur de fond rose */
-                z-index: 9999; /* Barre de navigation au-dessus des autres éléments */
-                transition: left 0.5s ease-in-out; /* Effet de transition lors du déplacement */
-            }
-
-            .navbar.open {
-                left: 0; /* Afficher la barre de navigation lorsqu'elle est ouverte */
-            }
-
-            .navbar .close-icon,
-            .navbar .open-icon {
-                position: absolute;
-                top: 20px;
-                right: 10px;
-                cursor: pointer;
-                color: red;
-                font-size: 24px;
-            }
-
-            .navbar .open-icon {
-                margin-left: 10px; /* Espacement du bouton d'ouverture de la navbar */
-            }
-
-            .navbar ul {
-                list-style: none;
-                padding: 0px;
-                margin: 20px;
-            }
-
-            .navbar ul li {
-                margin-bottom: 10px;
-            }
-
-            .navbar ul li a {
-                color: red;
-                text-decoration: none;
-                position: relative;
-                transition: background-color 0.5s ease-in-out;
-                font-size: 2%; /* Taille de police plus grande */
-            }
-
-            .navbar ul li a::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.05);
-                transition: left 0.3s ease-in-out;
-            }
-
-            .navbar ul li a:hover::before {
-                left: 0; /* Transition de gauche à droite */
-            }
-
-            /* Bouton d'ouverture de la navbar */
-            .open-icon {
-                width: 44px;
-                height: 44px;
-                line-height: 44px;
-                position: fixed;
-                top: 30px;
-                left: 30px;
-                z-index: 9999;
-                background: #black;
-                border-radius: 50%;
-                padding: 0;
-                text-align: center;
-                font-size: 24px;
-            }
-
-            @media screen and (max-width: 768px) {
-                /* Responsive styles */
-                .navbar {
-                width: 100%;
-                height: auto;
-                left: 0;
-                bottom: 0;
-                top: auto;
-                max-height: 100vh;
-                padding: 20px;
-                }
-
-                .navbar ul {
-                margin: 0;
-                }
-
-                .navbar ul li {
-                margin-bottom: 20px;
-                }
-
-                .navbar.open {
-                height: 100vh;
-                overflow-y: auto;
-                }
-            }
-            </style>
-
-        
-        <div class="navbar" id="navbar">
-            <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/discipline/liste">Knowledge</a></li>
-            <li><a href="/spectacle/aVenir">Projects Realase</a></li>
-            <li><a href="/stageevenement/evenement">My Certification</a></li>
-            <li><a href="/stageevenement/evenement">My Veille</a></li>
-            <li><a href="/preparation"> What about me ?</a></li>
-            <li><a href="/planning/planing">Contact me</a></li>
-            
-            <li><a href="/contact">Contact</a></li>
-            {% if is_granted('ROLE_SUPER_ADMIN') %}
-            <li><a href="/discipline">Liste des competences DEV</a></li>
-            <li><a href="/spectacle">Liste des Competences reseau</a></li>
-            <li><a href="/stageevenement">Liste des Certifications</a></li>
-            <li><a href="/stageevenement">Liste des Projet realiser</a></li> {# il y a un crud, et je dois remplir les champs tel que le fait de choisir une image, ven generale ce sera soit le logo du site, ou si ce n'en est pas un
-                                                                                alors je mettrerais l'image de l'entreprise pour laquelle je l'ai fait. je devrais aussi metre un url qui menera alors a ce dernier et si ce n'est pas
-                                                                                 un site je metterao alors le lien vers la page github qui me perlettera de monter mon code puis un lien vers un documentation soit un fichier pdf que j'aurai telecharger soit une lien vers gitbook#}
-            <li><a href="/page">Description de la veille</a></li> {# decrire la veille a travers un CK-Editor et y amener peut etre des flux rss ou encore des lien vers des elements qui pourrais m'interresser #} 
-            <li><a href="/logout">Déconnexion</a></li>
-            {% endif %}
-            </ul>
-        </div>
 
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
+        <div>
+            <nav>
+                <ul>
+                    <li>Accueil</li>
+                    <li>A propos de moi ...</li>
+                    <li>Compétences Dev</li>
+                    <li>Compétences Réseau</li>
+                    <li>Veille et Certification</li>
+                    <!-- pour les admin -->
+                    <li>Modif A Propos</li>
+                    <li>Modif Competences Dev</li>
+                    <li>Modif Competences Réseau</li>
+                    <li>Modif Veille et Certif</li>
+                    <li>Deconnexion </li>
+                    <!-- Fin des admin -->
+                </ul>
+            </nav>
+        </div>
         {% block body %}{% endblock %}
+        <footer>
+            <div>
+                <ul>
+                    <li>Politique de confidntialitée</li>
+                </ul>
+            </div>
+        </footer>
     </body>
 </html>
